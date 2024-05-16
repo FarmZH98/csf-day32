@@ -9,8 +9,9 @@ export function nonWhiteSpace(ctrl: AbstractControl) {
 
 export function lessThanToday(ctrl: AbstractControl) {
     let today: Date = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    if (new Date(ctrl.value) > today)
+    if (new Date(ctrl.value) < today)
         return { lessThanToday: true } as ValidationErrors
 
     return null

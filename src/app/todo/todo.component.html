@@ -1,3 +1,9 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Todo App</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
     <!-- id and class should be for css styling -->
     <div class="mb-3">
@@ -28,7 +34,10 @@
     </div>
     <!-- To add custom error to ensure date is not in the past -->
     <div class="row">
-        <span class="alert alert-danger" *ngIf="todoForm.get('due')?.errors?.['customError']">
+        <span class="alert alert-danger" *ngIf="todoForm.get('due')?.errors?.['required']">
+            Date is mandatory
+        </span>
+        <span class="alert alert-danger" *ngIf="todoForm.get('due')?.errors?.['lessThanToday']">
             Date should not be in the past
         </span>
     </div>

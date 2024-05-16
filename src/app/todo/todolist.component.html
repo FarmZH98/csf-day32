@@ -1,0 +1,17 @@
+
+<h2>Todo List</h2>
+
+@if (TaskList.length > 0) {
+  <ol>
+    @for (i of TaskList; track $index) {
+        <li>
+            <ul>{{ i.description| titlecase }}</ul>
+            <ul>{{ i.due }}</ul>
+            <ul>{{ i.priority| titlecase }}</ul>
+        </li>
+        <br>
+    }
+  </ol>
+} @else {
+  <h2>Your have no tasks at the moment.</h2>
+}

@@ -4,6 +4,16 @@
 <hr>
 <app-user-skills></app-user-skills> -->
 
-<app-todo></app-todo>
+<h1>Yet Another Shopping Cart</h1>
+<div>
+  <div>
+    <app-todo (onTodoSubmitted)="todoSubmitted($event)">
+    </app-todo>
+  </div>
+
+  <div>
+    <app-todolist [TaskList]="taskList"></app-todolist>
+  </div>
+</div>
 
 <router-outlet />
