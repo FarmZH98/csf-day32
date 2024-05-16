@@ -1,1 +1,40 @@
-<p>todo works!</p>
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <!-- id and class should be for css styling -->
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description">
+    </div>
+    <div class="row">
+        <span class="alert alert-danger" *ngIf="todoForm.get('description')?.errors?.['required']">
+            Description is mandatory
+        </span>
+        <span class="alert alert-danger" *ngIf="todoForm.get('description')?.errors?.['minlength']">
+            Description min length is 5 chars
+        </span>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="priority" class="form-label">Priority</label>
+            <br>
+            <input type="radio" value="high" id="priority" formControlName="priority"> HIGH
+            <input type="radio" value="medium" id="priority" formControlName="priority"> MEDIUM
+            <input type="radio" value="low" id="priority" formControlName="priority" checked="checked"> LOW
+    </div>
+
+    <div class="mb-3">
+        <label for="due" class="form-label">Due Date</label>
+        <input type="date" class="form-control" id="due" formControlName="due">
+    </div>
+    <!-- To add custom error to ensure date is not in the past -->
+    <div class="row">
+        <span class="alert alert-danger" *ngIf="todoForm.get('due')?.errors?.['customError']">
+            Date should not be in the past
+        </span>
+    </div>
+
+    <br><br>
+
+
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
